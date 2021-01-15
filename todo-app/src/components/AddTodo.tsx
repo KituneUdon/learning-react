@@ -11,13 +11,17 @@ type Props = {
   add: () => void;
 };
 
-const AddTodo: FC<Props> = ({ todo, onChange, add }) => (
-  <>
-    <input value={todo.value} onChange={onChange} />
-    <button type="button" onClick={add}>
-      追加
-    </button>
-  </>
-);
+const AddTodo: FC<Props> = ({ todo, onChange, add }) => {
+  const isTodo = () => todo.value === '';
+
+  return (
+    <>
+      <input value={todo.value} onChange={onChange} />
+      <button type="button" onClick={add} disabled={isTodo()}>
+        追加
+      </button>
+    </>
+  );
+};
 
 export default AddTodo;
