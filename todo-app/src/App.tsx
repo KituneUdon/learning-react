@@ -1,35 +1,13 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import './App.css';
 
 import AddTodo from './components/AddTodo';
 import TodoElemment from './components/TodoElemment';
 
-type Todo = {
-  id: number;
-  value: string;
-};
+import useTodo from './hooks/use-todo';
 
 const App: FC = () => {
-  // 入力されたTodoを保持するstate
-  const [todoList, setTodoList] = useState<Todo[]>([]);
-  // 現在inputに入力されているTodoを保持するstate
-  const [inputValue, setinputValue] = useState<Todo>({ id: 0, value: '' });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newText = { id: todoList.length, value: e.target.value };
-    setinputValue(newText);
-  };
-
-  const handleDelete = (deleteId: number) => {
-    const newTodoList = todoList.filter((todo) => todo.id !== deleteId);
-    setTodoList(newTodoList);
-  };
-
-  const add = () => {
-    const newTodo = [...todoList, inputValue];
-    setTodoList(newTodo);
-    setinputValue({ id: 0, value: '' });
-  };
+  const [todoList, inputValue, handleChange, handleDelete, add] = useTodo();
 
   return (
     <>
