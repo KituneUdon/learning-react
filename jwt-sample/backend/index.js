@@ -6,7 +6,10 @@ const cors = require('cors');
 const app = express();
 
 // CORS対策
-app.use(cors())
+app.use(cors({
+  credentials: true,
+  origin: "http://localhost:3000"
+}))
 
 const jwtSecret = 'secret123';
 
