@@ -1,10 +1,6 @@
 const jsonwebtoken = require('jsonwebtoken');
 
-const generate_jwt = (id) => {
-  // ここはコード内に書かないほうが良い
-  // 外部ファイルに書き込んでそちらを読むようにする
-  const jwtSecret = 'secret';
-
+const generate_jwt = (id, jwtSecret) => {
   const payload = {
     id: id
   }
