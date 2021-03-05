@@ -8,6 +8,7 @@ const Login = () => {
   const [statePassword, setStatePassword] = useState<string | null>(null);
 
   const history = useHistory();
+  
   const handleLogin = (id: string | null, password: string | null) => {
     if (typeof id === 'string' && typeof password === 'string') {
       login(id, password).then((value) => value && history.push('/mypage'))
