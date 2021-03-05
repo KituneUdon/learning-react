@@ -19,7 +19,6 @@ app.post('/login', (req, res) => {
   
   if (param.id === "test" && param.password === "test") {
     res.sendStatus(200);
-    // res.send("ログイン成功");
   }
 });
 
