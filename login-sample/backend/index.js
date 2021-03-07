@@ -54,5 +54,10 @@ app.get('/mypage', (req, res) => {
   res.send(200, 'ログイン済みユーザのためマイページが表示されています');
 });
 
+app.post('/logout', (req, res) => {
+  res.clearCookie('token');
+  res.send(200);
+})
+
 app.listen(8000);
 console.log('サーバ起動');
