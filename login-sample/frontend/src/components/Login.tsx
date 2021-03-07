@@ -8,7 +8,7 @@ const Login = () => {
   const [stateId, setStateId] = useState<string | null>(null);
   const [statePassword, setStatePassword] = useState<string | null>(null);
   const [message, setMessage] = useState("");
-  const { changeLoginStatus } = useContext(AuthContext);
+  const { setIsLogin } = useContext(AuthContext);
 
   const history = useHistory();
   
@@ -17,7 +17,7 @@ const Login = () => {
       login(id, password).then((value) => {
         if (value) {
           history.push('/mypage');
-          changeLoginStatus(true);
+          setIsLogin(true);
           setMessage("")
         } else {
           setMessage("IDかパスワードが違います。")
