@@ -34,3 +34,5 @@ router.get(
     failureRedirect: "/auth/login/fialed"
   })
 );
+
+module.exports = router;

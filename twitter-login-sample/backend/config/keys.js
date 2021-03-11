@@ -8,7 +8,8 @@ const TWITTER_TOKENS = {
 const DB_USER = "kituneudon";
 const DB_PASSWORD = "TjA9TNU2K565";
 const MONGODB = {
-  MONGODB_URI: `mongodb://${DB_USER}:${DB_PASSWORD}@twitterloginsample.nvqc4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+  // MONGODB_URI: `mongodb+srv://${DB_USER}:${DB_PASSWORD}@twitterloginsample.nvqc4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+  MONGODB_URI: "mongodb+srv://kituneudon:TjA9TNU2K565@twitterloginsample.nvqc4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 }
 
 const SESSION = {

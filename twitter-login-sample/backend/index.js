@@ -8,14 +8,23 @@ const authRoutes = require("./routes/auth-routes");
 const keys = require("./config/keys");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const keys = require("./config/keys");
 const cookieParser = require("cookie-parser"); 
 const cookieSession = require("cookie-session");
 
 // connect to mongodb
-mongoose.connect(keys.MONGODB_URI, () => {
-  console.log("connected to mongo db");
-});
+const connectDB = async() => {
+  try {
+    await mongoose.connect(keys.MONGODB_URI, () => {
+      console.log("connected to mongo db");
+    });
+  } catch (err) {
+    console.error(err.message);
+
+    process.exit(1);
+  }
+}
+
+connectDB()
 
 app.use(
   cookieSession({
@@ -62,4 +71,4 @@ app.get("/", authCheck, (req, res) => {
 });
 
 // connect react to nodejs express server
-app.listen(port, () => console.log(`Server is running on port ${posrt}`));
+app.listen(port, () => console.log(`Server is running on port ${port}!`));

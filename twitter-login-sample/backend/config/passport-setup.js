@@ -32,7 +32,7 @@ passport.use(
     });
 
     // create new user if the database dosen't have this user
-    if (!currentUsr) {
+    if (!currentUser) {
       const newUser = await new User({
         name: profile._json.name,
         screenName: profile._json.screen_name,
@@ -42,7 +42,8 @@ passport.use(
       if (newUser) {
         done(null, newUser);
       }
+    } else {
+      done(null, currentUser)
     }
-    done(null, currentUser)
   })
 );
