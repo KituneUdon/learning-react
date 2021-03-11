@@ -1,10 +1,30 @@
 import React, { FC, useState, useEffect } from 'react'
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 import Header from './Header';
 
+type User = {
+  name: string;
+  screenName: string;
+  twitterId: string;
+  profileImageUrl: string;
+}
+
+type ResponseJsonType = {
+  success: boolean;
+  message: string;
+  user: User;
+  cookies: string;
+}
+
 const HomePage: FC = () => {
-  const [user, setUser] = useState({});
+  const defaultUserValue = {
+    name: "",
+    screenName: "",
+    twitterId: "",
+    profileImageUrl: ""
+  }
+  const [user, setUser] = useState<User>(defaultUserValue);
   // eslint-disable-next-line
   const [error, setError] = useState<string | null>(null);
   const [authenticated, setAuthenticated]  = useState(false)
@@ -22,9 +42,9 @@ const HomePage: FC = () => {
         if(response.status === 200) return response;
         throw new Error("failed to authenticate user")
       })
-      .then(responseJson => {
+      .then((responseJson: AxiosResponse<ResponseJsonType>) => {
         setAuthenticated(true);
-        setUser(responseJson);
+        setUser(responseJson.data.user);
       })
       .catch(error => {
         setAuthenticated(false);
@@ -48,7 +68,7 @@ const HomePage: FC = () => {
         ) : (
           <div>
             <h1>You have login successfully!</h1>
-            <h2>Welcome {user}</h2>
+            <h2>Welcome {user.name}</h2>
           </div>
         )
       }
