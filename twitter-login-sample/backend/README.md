@@ -8,10 +8,8 @@ const TWITTER_TOKENS = {
   TWITTER_TOKEN_SECRET: ""
 };
 
-const DB_USER = "SOME USER";
-const DB_PASSWORD = "SOME PASSWORD";
 const MONGODB = {
-  MONGODB_URI: `mongodb://${DB_USER}:${DB_PASSWORD}@ds<SOME_DOMAIN>.mlab.com:<PORT>/<PROJECT_NAME>`
+  MONGODB_URI: `mongodb://<B_USER>:<DB_PASSWORD>@ds<SOME_DOMAIN>.mlab.com:<PORT>/<PROJECT_NAME>`
 }
 
 const SESSION = {
