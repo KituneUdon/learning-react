@@ -69,6 +69,8 @@ const HomePage: FC = () => {
           <div>
             <h1>You have login successfully!</h1>
             <h2>Welcome {user.name}</h2>
+            <h2>ScreenName {user.screenName}</h2>
+            <h2>UserID {user.twitterId}</h2>
           </div>
         )
       }
